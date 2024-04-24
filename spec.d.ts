@@ -1,6 +1,7 @@
 type Specification = {
   chainspec_version: 1;
   network: string;
+  chain_id: number;
   forks: {
     metadata: {
       name: string;
