@@ -1,6 +1,7 @@
 {
   "chainspec_version": 1,
   "network": "kakarot",
+  "chain_id": 1802203764,
   "forks": [
     {
       "metadata": {

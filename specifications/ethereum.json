@@ -1,6 +1,7 @@
 {
   "chainspec_version": 1,
   "network": "ethereum",
+  "chain_id": 1,
   "forks": [
     {
       "metadata": {
