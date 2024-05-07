@@ -1,5 +1,5 @@
 # Chain specifications
-Unified chain specifications of EVM networks.
+Unified chain specifications of the Execution Environemnts of networks.
 
 The spec contains all opcodes, precompiles and system contracts that the chain supports as well as information about when they were added.
 
