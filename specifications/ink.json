@@ -647,6 +647,12 @@
           "name": "p256Verify",
           "description": "Performs signature verifications in the secp256r1 elliptic curve"
         }
+      },
+      "system_contracts": {
+        "0x000f3df6d732807ef1319fb7b8bb8522d0beac02": {
+          "name": "BeaconRootsStorage",
+          "description": "Returns the L1 beacon root hash"
+        }
       }
     }
   ]
