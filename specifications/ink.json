@@ -1,11 +1,11 @@
 {
   "chainspec_version": 1,
-  "network": "ethereum",
-  "chain_id": 1,
+  "network": "ink",
+  "chain_id": 57073,
   "forks": [
     {
       "metadata": {
-        "name": "frontier",
+        "name": "v1.0.0",
         "block": 1
       },
       "opcodes": {
@@ -101,6 +101,18 @@
           "name": "BYTE",
           "description": "Retrieve single byte from word"
         },
+        "1b": {
+          "name": "SHL",
+          "description": "Left shift operation"
+        },
+        "1c": {
+          "name": "SHR",
+          "description": "Logical right shift operation"
+        },
+        "1d": {
+          "name": "SAR",
+          "description": "Arithmetic (signed) right shift operation"
+        },
         "20": {
           "name": "KECCAK256",
           "description": "Compute Keccak-256 hash"
@@ -115,11 +127,11 @@
         },
         "32": {
           "name": "ORIGIN",
-          "description": "Get execution origination address"
+          "description": "The opcodes has the same behaviour as in Ethereum L1 except for situations in which the transaction is an L1 to L2 transaction. In that case `tx.origin` is set to the aliased address of the address that triggered the transaction."
         },
         "33": {
           "name": "CALLER",
-          "description": "Get caller address"
+          "description": "The opcode has the same behaviour as in Ethereum L1 except for situations in which the transaction is an L1 to L2 transaction. In that case, the top-level contract to be called on L2 has `msg.sender` set to the aliased address of the address that triggered the transaction."
         },
         "34": {
           "name": "CALLVALUE",
@@ -157,6 +169,18 @@
           "name": "EXTCODECOPY",
           "description": "Copy an account's code to memory"
         },
+        "3d": {
+          "name": "RETURNDATASIZE",
+          "description": "Get size of output data from the previous call from the current environment"
+        },
+        "3e": {
+          "name": "RETURNDATACOPY",
+          "description": "Copy output data from the previous call to memory"
+        },
+        "3f": {
+          "name": "EXTCODEHASH",
+          "description": "Get hash of an account's code"
+        },
         "40": {
           "name": "BLOCKHASH",
           "description": "Get the hash of one of the 256 most recent complete blocks"
@@ -174,12 +198,28 @@
           "description": "Get the block's number"
         },
         "44": {
-          "name": "DIFFICULTY",
-          "description": "Get the block's difficulty"
+          "name": "PREVRANDAO",
+          "description": "Returns the randomness beacon provided by the L1 beacon chain of the latest synced L1 state on the L2"
         },
         "45": {
           "name": "GASLIMIT",
           "description": "Get the block's gas limit"
+        },
+        "46": {
+          "name": "CHAINID",
+          "description": "Get the chain ID"
+        },
+        "47": {
+          "name": "SELFBALANCE",
+          "description": "Get balance of currently executing account"
+        },
+        "48": {
+          "name": "BASEFEE",
+          "description": "Get the base fee"
+        },
+        "4a": {
+          "name": "BLOBBASEFEE",
+          "description": "Returns 1"
         },
         "50": {
           "name": "POP",
@@ -228,6 +268,22 @@
         "5b": {
           "name": "JUMPDEST",
           "description": "Mark a valid destination for jumps"
+        },
+        "5c": {
+          "name": "TLOAD",
+          "description": "Load word from transient storage"
+        },
+        "5d": {
+          "name": "TSTORE",
+          "description": "Save word to transient storage"
+        },
+        "5e": {
+          "name": "MCOPY",
+          "description": "Copy memory areas"
+        },
+        "5f": {
+          "name": "PUSH0",
+          "description": "Place value 0 on stack"
         },
         "60": {
           "name": "PUSH1",
@@ -521,13 +577,29 @@
           "name": "RETURN",
           "description": "Halt execution returning output data"
         },
+        "f4": {
+          "name": "DELEGATECALL",
+          "description": "Message-call into this account with an alternative account's code, but persisting the current values for sender and value"
+        },
+        "f5": {
+          "name": "CREATE2",
+          "description": "Create a new account with associated code at a predictable address"
+        },
+        "fa": {
+          "name": "STATICCALL",
+          "description": "Static message-call into an account"
+        },
+        "fd": {
+          "name": "REVERT",
+          "description": "Halt execution reverting state changes but returning data and remaining gas"
+        },
         "fe": {
           "name": "INVALID",
           "description": "Designated invalid instruction"
         },
         "ff": {
           "name": "SELFDESTRUCT",
-          "description": "Halt execution and register account for later deletion"
+          "description": "Deprecated. Halts execution and sends all Ether balance to the specified address. Registers the account for later deletion if executed in the same transaction as the contract was created"
         }
       },
       "precompiles": {
@@ -546,45 +618,7 @@
         "0x04": {
           "name": "identity",
           "description": "Returns the input"
-        }
-      }
-    },
-    {
-      "metadata": {
-        "name": "homestead",
-        "block": 1150000
-      },
-      "opcodes": {
-        "f4": {
-          "name": "DELEGATECALL",
-          "description": "Message-call into this account with an alternative account's code, but persisting the current values for sender and value"
-        }
-      }
-    },
-    {
-      "metadata": {
-        "name": "byzantium",
-        "block": 4370000
-      },
-      "opcodes": {
-        "3d": {
-          "name": "RETURNDATASIZE",
-          "description": "Get size of output data from the previous call from the current environment"
         },
-        "3e": {
-          "name": "RETURNDATACOPY",
-          "description": "Copy output data from the previous call to memory"
-        },
-        "fa": {
-          "name": "STATICCALL",
-          "description": "Static message-call into an account"
-        },
-        "fd": {
-          "name": "REVERT",
-          "description": "Halt execution reverting state changes but returning data and remaining gas"
-        }
-      },
-      "precompiles": {
         "0x05": {
           "name": "modexp",
           "description": "Arbitrary-precision exponentiation under modulo"
@@ -600,137 +634,95 @@
         "0x08": {
           "name": "ecPairing",
           "description": "Bilinear function on groups on the elliptic curve `alt_bn128`"
-        }
-      }
-    },
-    {
-      "metadata": {
-        "name": "constantinople",
-        "block": 7280000
-      },
-      "opcodes": {
-        "1b": {
-          "name": "SHL",
-          "description": "Left shift operation"
         },
-        "1c": {
-          "name": "SHR",
-          "description": "Logical right shift operation"
-        },
-        "1d": {
-          "name": "SAR",
-          "description": "Arithmetic (signed) right shift operation"
-        },
-        "3f": {
-          "name": "EXTCODEHASH",
-          "description": "Get hash of an account's code"
-        },
-        "f5": {
-          "name": "CREATE2",
-          "description": "Create a new account with associated code at a predictable address"
-        }
-      }
-    },
-    {
-      "metadata": {
-        "name": "istanbul",
-        "block": 9069000
-      },
-      "opcodes": {
-        "46": {
-          "name": "CHAINID",
-          "description": "Get the chain ID"
-        },
-        "47": {
-          "name": "SELFBALANCE",
-          "description": "Get balance of currently executing account"
-        }
-      },
-      "precompiles": {
         "0x09": {
           "name": "blake2f",
           "description": "Compression function F used in the BLAKE2 cryptographic hashing algorithm"
-        }
-      }
-    },
-    {
-      "metadata": {
-        "name": "london",
-        "block": 12965000
-      },
-      "opcodes": {
-        "48": {
-          "name": "BASEFEE",
-          "description": "Get the base fee"
-        }
-      }
-    },
-    {
-      "metadata": {
-        "name": "paris",
-        "block": 15537394
-      },
-      "opcodes": {
-        "44": {
-          "name": "PREVRANDAO",
-          "description": "Returns the output of the randomness beacon provided by the beacon chain"
-        }
-      }
-    },
-    {
-      "metadata": {
-        "name": "shanghai",
-        "block": 17034870
-      },
-      "opcodes": {
-        "5f": {
-          "name": "PUSH0",
-          "description": "Place value 0 on stack"
-        }
-      }
-    },
-    {
-      "metadata": {
-        "name": "cancun",
-        "block": 19426587
-      },
-      "opcodes": {
-        "49": {
-          "name": "BLOBHASH",
-          "description": "Get versioned hashes"
         },
-        "4a": {
-          "name": "BLOBBASEFEE",
-          "description": "Returns the value of the blob base-fee of the current block"
-        },
-        "5c": {
-          "name": "TLOAD",
-          "description": "Load word from transient storage"
-        },
-        "5d": {
-          "name": "TSTORE",
-          "description": "Save word to transient storage"
-        },
-        "5e": {
-          "name": "MCOPY",
-          "description": "Copy memory areas"
-        },
-        "ff": {
-          "name": "SELFDESTRUCT",
-          "description": "Deprecated. Halts execution and sends all Ether balance to the specified address. Registers the account for later deletion if executed in the same transaction as the contract was created"
-        }
-      },
-      "precompiles": {
         "0x0a": {
           "name": "pointEvaluation",
           "description": "Verify p(z) = y given commitment that corresponds to the polynomial p(x) and a KZG proof. Also verify that the provided commitment matches the provided versioned_hash"
+        },
+        "0x100": {
+          "name": "p256Verify",
+          "description": "Performs signature verifications in the secp256r1 elliptic curve"
         }
       },
       "system_contracts": {
         "0x000f3df6d732807ef1319fb7b8bb8522d0beac02": {
           "name": "BeaconRootsStorage",
-          "description": "Returns the beacon root associated with a given timestamp",
+          "description": "Returns the L1 beacon root hash",
           "url": "https://eips.ethereum.org/EIPS/eip-4788"
+        },
+        "0x4200000000000000000000000000000000000006": {
+          "name": "WETH",
+          "description": "The standard implementation of Wrapped Ether on Optimism",
+          "url": "https://github.com/inkonchain/optimism/blob/8feb0a43e2c463f32b13795fb95cd948fca04b4f/packages/contracts-bedrock/src/L2/WETH.sol"
+        },
+        "0x4200000000000000000000000000000000000007": {
+          "name": "L2CrossDomainMessenger",
+          "description": "Provides a higher level API for sending cross-domain messages compared to directly calling the `L2ToL1MessagePasser`. Allows for replayability if the L1 to L2 transaction reverts on L2",
+          "url": "https://github.com/inkonchain/optimism/blob/8feb0a43e2c463f32b13795fb95cd948fca04b4f/packages/contracts-bedrock/src/L2/L2CrossDomainMessenger.sol"
+        },
+        "0x420000000000000000000000000000000000000f": {
+          "name": "GasPriceOracle",
+          "description": "Provides information of L1 base fee data and calculates the L1 fee for a given transaction",
+          "url": "https://github.com/inkonchain/optimism/blob/8feb0a43e2c463f32b13795fb95cd948fca04b4f/packages/contracts-bedrock/src/L2/GasPriceOracle.sol"
+        },
+        "0x4200000000000000000000000000000000000010": {
+          "name": "L2StandardBridge",
+          "description": "Provides a higher level API built on top of the `L2CrossDomainMessenger` that gives standard interface for sending ETH or ERC20 across domains",
+          "url": "https://github.com/inkonchain/optimism/blob/8feb0a43e2c463f32b13795fb95cd948fca04b4f/packages/contracts-bedrock/src/L2/L2StandardBridge.sol"
+        },
+        "0x4200000000000000000000000000000000000011": {
+          "name": "SequencerFeeVault",
+          "description": "Accumulates any transaction priority fee and is the value of `block.coinbase`. When enough fees accumulate in this account, they can be withdrawn to an immutable L1 address",
+          "url": "https://github.com/inkonchain/optimism/blob/8feb0a43e2c463f32b13795fb95cd948fca04b4f/packages/contracts-bedrock/src/L2/SequencerFeeVault.sol"
+        },
+        "0x4200000000000000000000000000000000000012": {
+          "name": "OptimismMintableERC20Factory",
+          "description": "Responsible for creating ERC20 contracts on L2 that can be used for depositing native L1 tokens into. These ERC20 contracts can be created permisionlessly and implement the interface required by the `StandardBridge` to just work with deposits and withdrawals",
+          "url": "https://github.com/inkonchain/optimism/blob/8feb0a43e2c463f32b13795fb95cd948fca04b4f/packages/contracts-bedrock/src/universal/OptimismMintableERC20Factory.sol"
+        },
+        "0x4200000000000000000000000000000000000015": {
+          "name": "L1Block",
+          "description": "Responsible for maintaining L1 context in L2. This allows for L1 state to be accessed in L2",
+          "url": "https://github.com/inkonchain/optimism/blob/8feb0a43e2c463f32b13795fb95cd948fca04b4f/packages/contracts-bedrock/src/L2/L1Block.sol"
+        },
+        "0x4200000000000000000000000000000000000016": {
+          "name": "L2ToL1MessagePasser",
+          "description": "Stores commitments to withdrawal transactions. When a user is submitting the withdrawing transaction on L1, they provide a proof that the transaction that they withdrew on L2 is in the `sentMessages` mapping of this contract",
+          "url": "https://github.com/inkonchain/optimism/blob/8feb0a43e2c463f32b13795fb95cd948fca04b4f/packages/contracts-bedrock/src/L2/L2ToL1MessagePasser.sol"
+        },
+        "0x4200000000000000000000000000000000000017": {
+          "name": "OptimismMintableERC721Factory",
+          "description": "Responsible for creating ERC721 contracts on L2 that can be used for depositing native L1 NFTs into",
+          "url": "https://github.com/inkonchain/optimism/blob/8feb0a43e2c463f32b13795fb95cd948fca04b4f/packages/contracts-bedrock/src/L2/OptimismMintableERC721Factory.sol"
+        },
+        "0x4200000000000000000000000000000000000018": {
+          "name": "ProxyAdmin",
+          "description": "Owner of all of the proxy contracts set at the predeploys. It is itself behind a proxy. The owner of the ProxyAdmin will have the ability to upgrade any of the other predeploy contracts",
+          "url": "https://github.com/inkonchain/optimism/blob/8feb0a43e2c463f32b13795fb95cd948fca04b4f/packages/contracts-bedrock/src/universal/ProxyAdmin.sol"
+        },
+        "0x4200000000000000000000000000000000000019": {
+          "name": "BaseFeeVault",
+          "description": "Receives the basefees on L2. The basefee is not burnt on L2 like it is on L1. Once the contract has received a certain amount of fees, the ETH can be withdrawn to an immutable address on L1",
+          "url": "https://github.com/inkonchain/optimism/blob/8feb0a43e2c463f32b13795fb95cd948fca04b4f/packages/contracts-bedrock/src/L2/BaseFeeVault.sol"
+        },
+        "0x420000000000000000000000000000000000001a": {
+          "name": "L1FeeVault",
+          "description": "Receives the L1 portion of the transaction fees. Once the contract has received a certain amount of fees, the ETH can be withdrawn to an immutable address on L1",
+          "url": "https://github.com/inkonchain/optimism/blob/8feb0a43e2c463f32b13795fb95cd948fca04b4f/packages/contracts-bedrock/src/L2/L1FeeVault.sol"
+        },
+        "0x4200000000000000000000000000000000000020": {
+          "name": "SchemaRegistry",
+          "description": "Implements the global attestation schemas for the `Ethereum Attestation Service` protocol",
+          "url": "https://github.com/inkonchain/optimism/blob/8feb0a43e2c463f32b13795fb95cd948fca04b4f/packages/contracts-bedrock/src/vendor/eas/SchemaRegistry.sol"
+        },
+        "0x4200000000000000000000000000000000000021": {
+          "name": "EAS",
+          "description": "Implements the `Ethereum Attestation Service` protocol",
+          "url": "https://github.com/inkonchain/optimism/blob/8feb0a43e2c463f32b13795fb95cd948fca04b4f/packages/contracts-bedrock/src/vendor/eas/EAS.sol"
         }
       }
     }

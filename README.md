@@ -8,6 +8,7 @@ The spec contains all opcodes, precompiles and system contracts that the chain s
 There are specifications for the following EVM chains:
 1. [Ethereum](./specifications/ethereum.json)
 2. [Kakarot](./specifications/kakarot.json)
+3. [Ink](./specifications/ink.json)
 
 ## Add a chain specification
 
