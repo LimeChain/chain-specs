@@ -127,11 +127,11 @@
         },
         "32": {
           "name": "ORIGIN",
-          "description": "The opcodes has the same behaviour as in Ethereum L1 except for situations in which the transaction is an L1 to L2 transaction.\nIn that case `tx.origin` is set to the aliased address of the address that triggered the transaction."
+          "description": "The opcodes has the same behaviour as in Ethereum L1 except for situations in which the transaction is an L1 to L2 transaction. In that case `tx.origin` is set to the aliased address of the address that triggered the transaction."
         },
         "33": {
           "name": "CALLER",
-          "description": "The opcode has the same behaviour as in Ethereum L1 except for situations in which the transaction is an L1 to L2 transaction.\nIn that case, the top-level contract to be called on L2 has `msg.sender` set to the aliased address of the address that triggered the transaction."
+          "description": "The opcode has the same behaviour as in Ethereum L1 except for situations in which the transaction is an L1 to L2 transaction. In that case, the top-level contract to be called on L2 has `msg.sender` set to the aliased address of the address that triggered the transaction."
         },
         "34": {
           "name": "CALLVALUE",
