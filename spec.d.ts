@@ -23,6 +23,7 @@ type Specification = {
       [system_contract_address: string]: {
         name: string;
         description: string;
+        url: string;
       };
     };
   }[];
