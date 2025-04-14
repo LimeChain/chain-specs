@@ -640,7 +640,7 @@
           "description": "Compression function F used in the BLAKE2 cryptographic hashing algorithm"
         },
         "0x0a": {
-          "name": "pointEvaluation",
+          "name": "point evaluation",
           "description": "Verify p(z) = y given commitment that corresponds to the polynomial p(x) and a KZG proof. Also verify that the provided commitment matches the provided versioned_hash"
         },
         "0x100": {
