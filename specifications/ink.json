@@ -656,7 +656,7 @@
         },
         "0x4200000000000000000000000000000000000006": {
           "name": "WETH",
-          "description": "The standard implementation of Wrapped Ether on Optimism",
+          "description": "The standard implementation of Wrapped Ether on Ink",
           "url": "https://github.com/inkonchain/optimism/blob/8feb0a43e2c463f32b13795fb95cd948fca04b4f/packages/contracts-bedrock/src/L2/WETH.sol"
         },
         "0x4200000000000000000000000000000000000007": {
