@@ -6,7 +6,7 @@
     {
       "metadata": {
         "name": "Legacy?",
-        "block": 1
+        "block": 0
       },
       "opcodes": {
         "00": {
