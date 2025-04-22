@@ -10,6 +10,7 @@ There are specifications for the following EVM chains:
 2. [Kakarot](./specifications/kakarot.json)
 3. [Ink](./specifications/ink.json)
 3. [Zircuit](./specifications/zircuit.json)
+3. [World](./specifications/world-chain.json)
 
 ## Add a chain specification
 
