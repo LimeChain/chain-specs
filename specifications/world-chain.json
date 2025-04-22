@@ -5,7 +5,7 @@
   "forks": [
     {
       "metadata": {
-        "name": "Ecotone",
+        "name": "ecotone",
         "block": 0
       },
       "opcodes": {
@@ -724,7 +724,7 @@
     },
     {
       "metadata": {
-        "name": "Fjord",
+        "name": "fjord",
         "block": 1245181
       },
       "precompiles": {
