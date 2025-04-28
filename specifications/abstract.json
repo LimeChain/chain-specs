@@ -603,6 +603,53 @@
           "name": "p256Verify",
           "description": "Performs signature verifications in the secp256r1 elliptic curve"
         }
+      },
+      "system_contracts": {
+        "0x8002": {
+          "name": "AccountCodeStorage",
+          "description": "Stores a mapping of modified versions of code hashes and account addresses. It is used by the custom compilers in order to simulate extcodehash and extcodesize opcodes",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/AccountCodeStorage.sol"
+        },
+        "0x8003": {
+          "name": "NonceHolder",
+          "description": "Along with `bootloader` this contract ensures that the pair (sender, nonce) is always unique, thus ensuring the uniqueness of transaction hashes. Can be used to provide nonce-related information for an account",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/NonceHolder.sol"
+        },
+        "0x8004": {
+          "name": "KnownCodesStorage",
+          "description": "Maintains a mapping of known code hashes and additional metadata. It is mostly consumed by other system contracts but can provide bytecode-related information for a given address",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/KnownCodesStorage.sol"
+        },
+        "0x8005": {
+          "name": "ImmutableSimulator",
+          "description": "Serves as a utility contract for the custom compiler. It stores immutable variables created during deployment by other contracts. It is needed so that contracts with the same solidity code but different constructors parameters have the same bytecode",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/ImmutableSimulator.sol"
+        },
+        "0x8006": {
+          "name": "ContractDeployer",
+          "description": "Provides functions for deploying smart contracts on the network as well as retrieving account-related information. It is utilised by the custom compilers in order to simulate `create` and `create2` opcodes",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/ContractDeployer.sol"
+        },
+        "0x8008": {
+          "name": "L1Messenger",
+          "description": "Provides functionality for sending arbitrary-length messages to L1",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/L1Messenger.sol"
+        },
+        "0x800a": {
+          "name": "L2BaseToken",
+          "description": "Used by the `bootloader`, `MsgValueSimulator` and `ContractDeployer` system contracts to perform balance changes while simulating the msg.value behaviour on Ethereum",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/L2BaseToken.sol"
+        },
+        "0x800b": {
+          "name": "SystemContext",
+          "description": "Provides context variables such as `chainId`, `tx.origin`, `gasPrice`, `blockGasLimit` etc. It is utilised by the custom compiler to provide the implementation of block-related opcodes",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/SystemContext.sol"
+        },
+        "0x800c": {
+          "name": "BootloaderUtilities",
+          "description": "Provides utility functions for computing transaction hashes for a given transaction data depending on its transaction type. It is utilised by the Bootloader contract",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/BootloaderUtilities.sol"
+        }
       }
     }
   ]
