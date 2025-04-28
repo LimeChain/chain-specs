@@ -147,11 +147,11 @@
         },
         "37": {
           "name": "CALLDATACOPY",
-          "description": "Copies input data in the current environment to memory. Executes a loop of calldataload and mstore in order to load and copy the calldata into memory. The execution will panic if `2^32-32 + offset %32 < offset + len`."
+          "description": "Copies input data in the current environment to memory.\n\nExecutes a loop of calldataload and mstore in order to load and copy the calldata into memory. The execution will panic if `2^32-32 + offset %32 < offset + len`."
         },
         "38": {
           "name": "CODESIZE",
-          "description": "Gets the size of the code in case it is called on a Runtime code. If called on a deploy code, the returned size is the size of the constructor arguments only (excluding deploy code size)."
+          "description": "Gets the size of the code in case it is called on a Runtime code.\n\nIf called on a deploy code, the returned size is the size of the constructor arguments only (excluding deploy code size)."
         },
         "3a": {
           "name": "GASPRICE",
@@ -215,11 +215,11 @@
         },
         "51": {
           "name": "MLOAD",
-          "description": "Loads word from memory. Memory growth is counted in bytes. Payment fees for memory growth are charged linearly at a rate of 1 erg per byte. `zksolc` and `zkvyper` compilers may produce different msize compared to Ethereum's solc since fewer bytes have been allocated. This may lead to cases where the EVM panics, but ZKsync's EraVM does not due to the difference in memory growth"
+          "description": "Loads word from memory.\n\nMemory growth is counted in bytes. Payment fees for memory growth are charged linearly at a rate of 1 erg per byte.\n\n`zksolc` and `zkvyper` compilers may produce different msize compared to Ethereum's solc since fewer bytes have been allocated. This may lead to cases where the EVM panics, but ZKsync's EraVM does not due to the difference in memory growth"
         },
         "52": {
           "name": "MSTORE",
-          "description": "Saves word to memory. Memory growth is counted in bytes. Payment fees for memory growth are charged linearly at a rate of 1 erg per byte. The custom compiler may produce different msize compared to Ethereum since fewer bytes have been allocated. This may lead to cases where the EVM panics, but ZKsync's EraVM does not due to the difference in memory growth"
+          "description": "Saves word to memory.\n\nMemory growth is counted in bytes. Payment fees for memory growth are charged linearly at a rate of 1 erg per byte.\n\nThe custom compiler may produce different msize compared to Ethereum since fewer bytes have been allocated. This may lead to cases where the EVM panics, but ZKsync's EraVM does not due to the difference in memory growth"
         },
         "53": {
           "name": "MSTORE8",
@@ -543,27 +543,27 @@
         },
         "f0": {
           "name": "CREATE",
-          "description": "The `zksolc` and `zkvyper` compilers provide syntactic sugar solution to developers.\n\nCompilers replace `CREATE` opcodes with `CALL` to a system contract `ContractDeployer` providing contract deployment functionality. The address of the contract is calculated by `address = keccak(CREATE_PREFIX, sender, senderNonce)`"
+          "description": "The `zksolc` and `zkvyper` compilers provide syntactic sugar solution to developers.\n\nCompilers replace `CREATE` opcodes with `CALL` to a system contract `ContractDeployer` providing contract deployment functionality.\n\nThe address of the contract is calculated by `address = keccak(CREATE_PREFIX, sender, senderNonce)`"
         },
         "f1": {
           "name": "CALL",
-          "description": "Creates a new sub-context and executes the code of the given account. The OPCODE does not support sending ether natively. If not compiled with `zk-solc` or `zk-vyper`, Ether must be send using a system contract `MsgValueSimulator` prior to executing the CALL opcode. `zk-solc` and `zk-vyper` compilers inject the call to the system contract under the hood during compilation. Memory growth occurs after the call has ended, leading to a difference in the memory size (msize). As a result, ZKsync Era may not panic in situations where EVM would panic due to differences in memory growth."
+          "description": "Creates a new sub-context and executes the code of the given account.\n\nThe OPCODE does not support sending ether natively.\n\nIf not compiled with `zk-solc` or `zk-vyper`, Ether must be send using a system contract `MsgValueSimulator` prior to executing the CALL opcode.\n\n`zk-solc` and `zk-vyper` compilers inject the call to the system contract under the hood during compilation.\n\nMemory growth occurs after the call has ended, leading to a difference in the memory size (msize). As a result, ZKsync Era may not panic in situations where EVM would panic due to differences in memory growth."
         },
         "f3": {
           "name": "RETURN",
-          "description": "Exits the current context successfully. Constructors return the array of immutable values. If you use RETURN in an assembly block in the constructor, it returns the array of immutable values initialized so far."
+          "description": "Exits the current context successfully.\n\nConstructors return the array of immutable values. If you use RETURN in an assembly block in the constructor, it returns the array of immutable values initialized so far."
         },
         "f4": {
           "name": "DELEGATECALL",
-          "description": "Message-call into this account with an alternative account's code, but persisting the current values for sender and value. The OPCODE does not support sending ether natively. If not compiled with `zk-solc` or `zk-vyper`, Ether must be send using a system contract `MsgValueSimulator` prior to executing the CALL opcode. `zk-solc` and `zk-vyper` compilers inject the call to the system contract under the hood during compilation. Memory growth occurs after the call has ended, leading to a difference in the memory size (msize). As a result, ZKsync Era may not panic in situations where EVM would panic due to differences in memory growth."
+          "description": "Message-call into this account with an alternative account's code, but persisting the current values for sender and value.\n\nThe OPCODE does not support sending ether natively.\n\nIf not compiled with `zk-solc` or `zk-vyper`, Ether must be send using a system contract `MsgValueSimulator` prior to executing the CALL opcode.\n\n`zk-solc` and `zk-vyper` compilers inject the call to the system contract under the hood during compilation.\n\nMemory growth occurs after the call has ended, leading to a difference in the memory size (msize). As a result, ZKsync Era may not panic in situations where EVM would panic due to differences in memory growth."
         },
         "f5": {
           "name": "CREATE2",
-          "description": "The `zksolc` and `zkvyper` compilers provide syntactic sugar solution to developers. Compilers replace CREATE2 opcodes with CALL to a system contract `ContractDeployer` providing contract deployment functionality. The address of the newly deployed contract is calculated by `address = keccak256(CREATE2_PREFIX, sender, salt, bytecodeHash, constructorInputHash)`"
+          "description": "The `zksolc` and `zkvyper` compilers provide syntactic sugar solution to developers.\n\nCompilers replace CREATE2 opcodes with CALL to a system contract `ContractDeployer` providing contract deployment functionality.\n\nThe address of the newly deployed contract is calculated by `address = keccak256(CREATE2_PREFIX, sender, salt, bytecodeHash, constructorInputHash)`"
         },
         "fa": {
           "name": "STATICCALL",
-          "description": "Executes a static message call into an account. Memory growth occurs after the call has ended, leading to a difference in the memory size (msize). As a result, ZKsync Era may not panic in situations where EVM would panic due to differences in memory growth"
+          "description": "Executes a static message call into an account.\n\nMemory growth occurs after the call has ended, leading to a difference in the memory size (msize). As a result, ZKsync Era may not panic in situations where EVM would panic due to differences in memory growth"
         },
         "fd": {
           "name": "REVERT",
