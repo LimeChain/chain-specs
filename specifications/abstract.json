@@ -207,7 +207,7 @@
         },
         "48": {
           "name": "BASEFEE",
-          "description": "Returns 250000000 (wei), however under very high L1 gas prices it may rise"
+          "description": "Get the base fee"
         },
         "50": {
           "name": "POP",
