@@ -621,6 +621,10 @@
         "0x08": {
           "name": "ecPairing",
           "description": "Bilinear function on groups on the elliptic curve `alt_bn128`. The number of points(sets, pairs) is limited to 4."
+        },
+        "0x100": {
+          "name": "p256Verify",
+          "description": "Performs signature verifications in the secp256r1 elliptic curve"
         }
       },
       "system_contracts": {
