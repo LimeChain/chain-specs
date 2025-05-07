@@ -5,7 +5,7 @@
   "forks": [
     {
       "metadata": {
-        "name": "frontier",
+        "name": "arbos32",
         "block": 0
       },
       "opcodes": {
@@ -645,6 +645,48 @@
         "0x100": {
           "name": "p256Verify",
           "description": "Performs signature verifications in the secp256r1 elliptic curve"
+        }
+      },
+      "system_contracts": {
+        "0x0000000000000000000000000000000000000064": {
+          "name": "ArbSys",
+          "description": "Provides system-level functionality for getting L2 block number, hash, checking if a call is top-level, sending cross-domain messages as-well as sending ETH to L1",
+          "url": "https://github.com/OffchainLabs/nitro/blob/6b73ae814ee3960c29747a97336974493356fddf/precompiles/ArbSys.go"
+        },
+        "0x0000000000000000000000000000000000000065": {
+          "name": "ArbInfo",
+          "description": "Provides the ability to lookup account's balance and contract's deployed code",
+          "url": "https://github.com/OffchainLabs/nitro/blob/6b73ae814ee3960c29747a97336974493356fddf/precompiles/ArbInfo.go"
+        },
+        "0x000000000000000000000000000000000000006b": {
+          "name": "ArbOwnerPublic",
+          "description": "Provides non-owners with info about the current chain owners",
+          "url": "https://github.com/OffchainLabs/nitro/blob/6b73ae814ee3960c29747a97336974493356fddf/precompiles/ArbOwnerPublic.go"
+        },
+        "0x000000000000000000000000000000000000006c": {
+          "name": "ArbGasInfo",
+          "description": "Provides data for gas costs in wei and ArbGas, estimates for L1 basefee, the L1 pricer reward rate and recipient as-well as information on the chain speed limit, pool size and transaction gas limit",
+          "url": "https://github.com/OffchainLabs/nitro/blob/6b73ae814ee3960c29747a97336974493356fddf/precompiles/ArbGasInfo.go"
+        },
+        "0x000000000000000000000000000000000000006d": {
+          "name": "ArbAggregator",
+          "description": "Provides aggregators and their user's methods for configuring how they participate in L1 aggregation. Arbitrum One's default aggregator is the Sequencer, which a user will prefer unless `SetPreferredAggregator` is invoked to change it",
+          "url": "https://github.com/OffchainLabs/nitro/blob/6b73ae814ee3960c29747a97336974493356fddf/precompiles/ArbAggregator.go"
+        },
+        "0x000000000000000000000000000000000000006e": {
+          "name": "ArbRetryableTx",
+          "description": "Provides methods for managing retryables (cross domain messages)",
+          "url": "https://github.com/OffchainLabs/nitro/blob/6b73ae814ee3960c29747a97336974493356fddf/precompiles/ArbRetryableTx.go"
+        },
+        "0x0000000000000000000000000000000000000071": {
+          "name": "ArbWasm",
+          "description": "Provides helper methods for managing Stylus contracts",
+          "url": "https://github.com/OffchainLabs/nitro/blob/6b73ae814ee3960c29747a97336974493356fddf/precompiles/ArbWasm.go"
+        },
+        "0x0000000000000000000000000000000000000072": {
+          "name": "ArbWasmCache",
+          "description": "Provides helper methods for managing Stylus cache",
+          "url": "https://github.com/OffchainLabs/nitro/blob/6b73ae814ee3960c29747a97336974493356fddf/precompiles/ArbWasmCache.go"
         }
       }
     }
