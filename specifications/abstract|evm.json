@@ -1,0 +1,672 @@
+{
+  "chainspec_version": 1,
+  "network": "abstract",
+  "chain_id": 2741,
+  "forks": [
+    {
+      "metadata": {
+        "name": "v27",
+        "block": 0
+      },
+      "opcodes": {
+        "00": {
+          "name": "STOP",
+          "description": "Halts execution"
+        },
+        "01": {
+          "name": "ADD",
+          "description": "Addition operation"
+        },
+        "02": {
+          "name": "MUL",
+          "description": "Multiplication operation"
+        },
+        "03": {
+          "name": "SUB",
+          "description": "Subtraction operation"
+        },
+        "04": {
+          "name": "DIV",
+          "description": "Integer division operation"
+        },
+        "05": {
+          "name": "SDIV",
+          "description": "Signed integer division operation (truncated)"
+        },
+        "06": {
+          "name": "MOD",
+          "description": "Modulo remainder operation"
+        },
+        "07": {
+          "name": "SMOD",
+          "description": "Signed modulo remainder operation"
+        },
+        "08": {
+          "name": "ADDMOD",
+          "description": "Modulo addition operation"
+        },
+        "09": {
+          "name": "MULMOD",
+          "description": "Modulo multiplication operation"
+        },
+        "0a": {
+          "name": "EXP",
+          "description": "Exponential operation"
+        },
+        "0b": {
+          "name": "SIGNEXTEND",
+          "description": "Extend length of two's complement signed integer"
+        },
+        "10": {
+          "name": "LT",
+          "description": "Less-than comparison"
+        },
+        "11": {
+          "name": "GT",
+          "description": "Greater-than comparison"
+        },
+        "12": {
+          "name": "SLT",
+          "description": "Signed less-than comparison"
+        },
+        "13": {
+          "name": "SGT",
+          "description": "Signed greater-than comparison"
+        },
+        "14": {
+          "name": "EQ",
+          "description": "Equality comparison"
+        },
+        "15": {
+          "name": "ISZERO",
+          "description": "Is-zero comparison"
+        },
+        "16": {
+          "name": "AND",
+          "description": "Bitwise AND operation"
+        },
+        "17": {
+          "name": "OR",
+          "description": "Bitwise OR operation"
+        },
+        "18": {
+          "name": "XOR",
+          "description": "Bitwise XOR operation"
+        },
+        "19": {
+          "name": "NOT",
+          "description": "Bitwise NOT operation"
+        },
+        "1a": {
+          "name": "BYTE",
+          "description": "Retrieve single byte from word"
+        },
+        "1b": {
+          "name": "SHL",
+          "description": "Left shift operation"
+        },
+        "1c": {
+          "name": "SHR",
+          "description": "Logical right shift operation"
+        },
+        "1d": {
+          "name": "SAR",
+          "description": "Arithmetic (signed) right shift operation"
+        },
+        "20": {
+          "name": "KECCAK256",
+          "description": "Compute Keccak-256 hash"
+        },
+        "30": {
+          "name": "ADDRESS",
+          "description": "Get address of currently executing account"
+        },
+        "31": {
+          "name": "BALANCE",
+          "description": "Get balance of the given account"
+        },
+        "32": {
+          "name": "ORIGIN",
+          "description": "Get execution origination address"
+        },
+        "33": {
+          "name": "CALLER",
+          "description": "Get caller address"
+        },
+        "34": {
+          "name": "CALLVALUE",
+          "description": "Get deposited value by the instruction/transaction responsible for this execution"
+        },
+        "35": {
+          "name": "CALLDATALOAD",
+          "description": "Get input data of current environment"
+        },
+        "36": {
+          "name": "CALLDATASIZE",
+          "description": "Get size of input data in current environment"
+        },
+        "37": {
+          "name": "CALLDATACOPY",
+          "description": "Copy input data in current environment to memory"
+        },
+        "38": {
+          "name": "CODESIZE",
+          "description": "Get size of code running in current environment"
+        },
+        "39": {
+          "name": "CODECOPY",
+          "description": "Copy code running in current environment to memory"
+        },
+        "3a": {
+          "name": "GASPRICE",
+          "description": "Get price of gas in current environment"
+        },
+        "3b": {
+          "name": "EXTCODESIZE",
+          "description": "Get size of an account's code"
+        },
+        "3c": {
+          "name": "EXTCODECOPY",
+          "description": "Copy an account's code to memory"
+        },
+        "3d": {
+          "name": "RETURNDATASIZE",
+          "description": "Get size of output data from the previous call from the current environment"
+        },
+        "3e": {
+          "name": "RETURNDATACOPY",
+          "description": "Copy output data from the previous call to memory"
+        },
+        "3f": {
+          "name": "EXTCODEHASH",
+          "description": "Get hash of an account's code"
+        },
+        "40": {
+          "name": "BLOCKHASH",
+          "description": "Get the hash of one of the 256 most recent complete blocks"
+        },
+        "41": {
+          "name": "COINBASE",
+          "description": "Returns the address of the Bootloader contract, which is `0x8001`"
+        },
+        "42": {
+          "name": "TIMESTAMP",
+          "description": "Get the block's timestamp"
+        },
+        "43": {
+          "name": "NUMBER",
+          "description": "Get the block's number"
+        },
+        "44": {
+          "name": "PREVRANDAO",
+          "description": "Returns the constant 2500000000000000"
+        },
+        "45": {
+          "name": "GASLIMIT",
+          "description": "Returns the same fixed constant as EraVM and should not be used"
+        },
+        "46": {
+          "name": "CHAINID",
+          "description": "Get the chain ID"
+        },
+        "47": {
+          "name": "SELFBALANCE",
+          "description": "Get balance of currently executing account"
+        },
+        "48": {
+          "name": "BASEFEE",
+          "description": "Get the base fee"
+        },
+        "50": {
+          "name": "POP",
+          "description": "Remove item from stack"
+        },
+        "51": {
+          "name": "MLOAD",
+          "description": "Load word from memory"
+        },
+        "52": {
+          "name": "MSTORE",
+          "description": "Save word to memory"
+        },
+        "53": {
+          "name": "MSTORE8",
+          "description": "Save byte to memory"
+        },
+        "54": {
+          "name": "SLOAD",
+          "description": "Load word from storage"
+        },
+        "55": {
+          "name": "SSTORE",
+          "description": "Save word to storage"
+        },
+        "56": {
+          "name": "JUMP",
+          "description": "Alter the program counter"
+        },
+        "57": {
+          "name": "JUMPI",
+          "description": "Conditionally alter the program counter"
+        },
+        "58": {
+          "name": "PC",
+          "description": "Get the value of the program counter prior to the increment corresponding to this instruction"
+        },
+        "59": {
+          "name": "MSIZE",
+          "description": "Get the size of active memory in bytes"
+        },
+        "5a": {
+          "name": "GAS",
+          "description": "Get the amount of available gas, including the corresponding reduction for the cost of this instruction"
+        },
+        "5b": {
+          "name": "JUMPDEST",
+          "description": "Mark a valid destination for jumps"
+        },
+        "5c": {
+          "name": "TLOAD",
+          "description": "Load word from transient storage"
+        },
+        "5d": {
+          "name": "TSTORE",
+          "description": "Save word to transient storage"
+        },
+        "5e": {
+          "name": "MCOPY",
+          "description": "Copy memory areas"
+        },
+        "5f": {
+          "name": "PUSH0",
+          "description": "Place value 0 on stack"
+        },
+        "60": {
+          "name": "PUSH1",
+          "description": "Place 1 byte item on stack"
+        },
+        "61": {
+          "name": "PUSH2",
+          "description": "Place 2 byte item on stack"
+        },
+        "62": {
+          "name": "PUSH3",
+          "description": "Place 3 byte item on stack"
+        },
+        "63": {
+          "name": "PUSH4",
+          "description": "Place 4 byte item on stack"
+        },
+        "64": {
+          "name": "PUSH5",
+          "description": "Place 5 byte item on stack"
+        },
+        "65": {
+          "name": "PUSH6",
+          "description": "Place 6 byte item on stack"
+        },
+        "66": {
+          "name": "PUSH7",
+          "description": "Place 7 byte item on stack"
+        },
+        "67": {
+          "name": "PUSH8",
+          "description": "Place 8 byte item on stack"
+        },
+        "68": {
+          "name": "PUSH9",
+          "description": "Place 9 byte item on stack"
+        },
+        "69": {
+          "name": "PUSH10",
+          "description": "Place 10 byte item on stack"
+        },
+        "6a": {
+          "name": "PUSH11",
+          "description": "Place 11 byte item on stack"
+        },
+        "6b": {
+          "name": "PUSH12",
+          "description": "Place 12 byte item on stack"
+        },
+        "6c": {
+          "name": "PUSH13",
+          "description": "Place 13 byte item on stack"
+        },
+        "6d": {
+          "name": "PUSH14",
+          "description": "Place 14 byte item on stack"
+        },
+        "6e": {
+          "name": "PUSH15",
+          "description": "Place 15 byte item on stack"
+        },
+        "6f": {
+          "name": "PUSH16",
+          "description": "Place 16 byte item on stack"
+        },
+        "70": {
+          "name": "PUSH17",
+          "description": "Place 17 byte item on stack"
+        },
+        "71": {
+          "name": "PUSH18",
+          "description": "Place 18 byte item on stack"
+        },
+        "72": {
+          "name": "PUSH19",
+          "description": "Place 19 byte item on stack"
+        },
+        "73": {
+          "name": "PUSH20",
+          "description": "Place 20 byte item on stack"
+        },
+        "74": {
+          "name": "PUSH21",
+          "description": "Place 21 byte item on stack"
+        },
+        "75": {
+          "name": "PUSH22",
+          "description": "Place 22 byte item on stack"
+        },
+        "76": {
+          "name": "PUSH23",
+          "description": "Place 23 byte item on stack"
+        },
+        "77": {
+          "name": "PUSH24",
+          "description": "Place 24 byte item on stack"
+        },
+        "78": {
+          "name": "PUSH25",
+          "description": "Place 25 byte item on stack"
+        },
+        "79": {
+          "name": "PUSH26",
+          "description": "Place 26 byte item on stack"
+        },
+        "7a": {
+          "name": "PUSH27",
+          "description": "Place 27 byte item on stack"
+        },
+        "7b": {
+          "name": "PUSH28",
+          "description": "Place 28 byte item on stack"
+        },
+        "7c": {
+          "name": "PUSH29",
+          "description": "Place 29 byte item on stack"
+        },
+        "7d": {
+          "name": "PUSH30",
+          "description": "Place 30 byte item on stack"
+        },
+        "7e": {
+          "name": "PUSH31",
+          "description": "Place 31 byte item on stack"
+        },
+        "7f": {
+          "name": "PUSH32",
+          "description": "Place 32 byte (full word) item on stack"
+        },
+        "80": {
+          "name": "DUP1",
+          "description": "Duplicate 1st stack item"
+        },
+        "81": {
+          "name": "DUP2",
+          "description": "Duplicate 2nd stack item"
+        },
+        "82": {
+          "name": "DUP3",
+          "description": "Duplicate 3rd stack item"
+        },
+        "83": {
+          "name": "DUP4",
+          "description": "Duplicate 4th stack item"
+        },
+        "84": {
+          "name": "DUP5",
+          "description": "Duplicate 5th stack item"
+        },
+        "85": {
+          "name": "DUP6",
+          "description": "Duplicate 6th stack item"
+        },
+        "86": {
+          "name": "DUP7",
+          "description": "Duplicate 7th stack item"
+        },
+        "87": {
+          "name": "DUP8",
+          "description": "Duplicate 8th stack item"
+        },
+        "88": {
+          "name": "DUP9",
+          "description": "Duplicate 9th stack item"
+        },
+        "89": {
+          "name": "DUP10",
+          "description": "Duplicate 10th stack item"
+        },
+        "8a": {
+          "name": "DUP11",
+          "description": "Duplicate 11th stack item"
+        },
+        "8b": {
+          "name": "DUP12",
+          "description": "Duplicate 12th stack item"
+        },
+        "8c": {
+          "name": "DUP13",
+          "description": "Duplicate 13th stack item"
+        },
+        "8d": {
+          "name": "DUP14",
+          "description": "Duplicate 14th stack item"
+        },
+        "8e": {
+          "name": "DUP15",
+          "description": "Duplicate 15th stack item"
+        },
+        "8f": {
+          "name": "DUP16",
+          "description": "Duplicate 16th stack item"
+        },
+        "90": {
+          "name": "SWAP1",
+          "description": "Exchange 1st and 2nd stack items"
+        },
+        "91": {
+          "name": "SWAP2",
+          "description": "Exchange 1st and 3rd stack items"
+        },
+        "92": {
+          "name": "SWAP3",
+          "description": "Exchange 1st and 4th stack items"
+        },
+        "93": {
+          "name": "SWAP4",
+          "description": "Exchange 1st and 5th stack items"
+        },
+        "94": {
+          "name": "SWAP5",
+          "description": "Exchange 1st and 6th stack items"
+        },
+        "95": {
+          "name": "SWAP6",
+          "description": "Exchange 1st and 7th stack items"
+        },
+        "96": {
+          "name": "SWAP7",
+          "description": "Exchange 1st and 8th stack items"
+        },
+        "97": {
+          "name": "SWAP8",
+          "description": "Exchange 1st and 9th stack items"
+        },
+        "98": {
+          "name": "SWAP9",
+          "description": "Exchange 1st and 10th stack items"
+        },
+        "99": {
+          "name": "SWAP10",
+          "description": "Exchange 1st and 11th stack items"
+        },
+        "9a": {
+          "name": "SWAP11",
+          "description": "Exchange 1st and 12th stack items"
+        },
+        "9b": {
+          "name": "SWAP12",
+          "description": "Exchange 1st and 13th stack items"
+        },
+        "9c": {
+          "name": "SWAP13",
+          "description": "Exchange 1st and 14th stack items"
+        },
+        "9d": {
+          "name": "SWAP14",
+          "description": "Exchange 1st and 15th stack items"
+        },
+        "9e": {
+          "name": "SWAP15",
+          "description": "Exchange 1st and 16th stack items"
+        },
+        "9f": {
+          "name": "SWAP16",
+          "description": "Exchange 1st and 17th stack items"
+        },
+        "a0": {
+          "name": "LOG0",
+          "description": "Append log record with no topics"
+        },
+        "a1": {
+          "name": "LOG1",
+          "description": "Append log record with one topic"
+        },
+        "a2": {
+          "name": "LOG2",
+          "description": "Append log record with two topics"
+        },
+        "a3": {
+          "name": "LOG3",
+          "description": "Append log record with three topics"
+        },
+        "a4": {
+          "name": "LOG4",
+          "description": "Append log record with four topics"
+        },
+        "f0": {
+          "name": "CREATE",
+          "description": "Create a new account with associated code"
+        },
+        "f1": {
+          "name": "CALL",
+          "description": "Message-call into an account"
+        },
+        "f3": {
+          "name": "RETURN",
+          "description": "Halt execution returning output data"
+        },
+        "f4": {
+          "name": "DELEGATECALL",
+          "description": "Message-call into this account with an alternative account's code, but persisting the current values for sender and value. `DELEGATECALL` between EVM and native EraVM contracts will be reverted."
+        },
+        "f5": {
+          "name": "CREATE2",
+          "description": "Create a new account with associated code at a predictable address"
+        },
+        "fa": {
+          "name": "STATICCALL",
+          "description": "Static message-call into an account"
+        },
+        "fd": {
+          "name": "REVERT",
+          "description": "Halt execution reverting state changes but returning data and remaining gas"
+        },
+        "fe": {
+          "name": "INVALID",
+          "description": "Designated invalid instruction"
+        }
+      },
+      "precompiles": {
+        "0x01": {
+          "name": "ecRecover",
+          "description": "Elliptic curve digital signature algorithm (ECDSA) public key recovery function"
+        },
+        "0x02": {
+          "name": "SHA2-256",
+          "description": "Hash function"
+        },
+        "0x04": {
+          "name": "identity",
+          "description": "Returns the input"
+        },
+        "0x06": {
+          "name": "ecAdd",
+          "description": "Point addition (ADD) on the elliptic curve `alt_bn128`"
+        },
+        "0x07": {
+          "name": "ecMul",
+          "description": "Scalar multiplication (MUL) on the elliptic curve `alt_bn128`"
+        },
+        "0x08": {
+          "name": "ecPairing",
+          "description": "Bilinear function on groups on the elliptic curve `alt_bn128`"
+        },
+        "0x100": {
+          "name": "p256Verify",
+          "description": "Performs signature verifications in the secp256r1 elliptic curve"
+        }
+      },
+      "system_contracts": {
+        "0x0000000000000000000000000000000000008002": {
+          "name": "AccountCodeStorage",
+          "description": "Stores a mapping of modified versions of code hashes and account addresses. It is used by the custom compilers in order to simulate extcodehash and extcodesize opcodes",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/AccountCodeStorage.sol"
+        },
+        "0x0000000000000000000000000000000000008003": {
+          "name": "NonceHolder",
+          "description": "Along with `bootloader` this contract ensures that the pair (sender, nonce) is always unique, thus ensuring the uniqueness of transaction hashes. Can be used to provide nonce-related information for an account",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/NonceHolder.sol"
+        },
+        "0x0000000000000000000000000000000000008004": {
+          "name": "KnownCodesStorage",
+          "description": "Maintains a mapping of known code hashes and additional metadata. It is mostly consumed by other system contracts but can provide bytecode-related information for a given address",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/KnownCodesStorage.sol"
+        },
+        "0x0000000000000000000000000000000000008005": {
+          "name": "ImmutableSimulator",
+          "description": "Serves as a utility contract for the custom compiler. It stores immutable variables created during deployment by other contracts. It is needed so that contracts with the same solidity code but different constructors parameters have the same bytecode",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/ImmutableSimulator.sol"
+        },
+        "0x0000000000000000000000000000000000008006": {
+          "name": "ContractDeployer",
+          "description": "Provides functions for deploying smart contracts on the network as well as retrieving account-related information. It is utilised by the custom compilers in order to simulate `create` and `create2` opcodes",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/ContractDeployer.sol"
+        },
+        "0x0000000000000000000000000000000000008008": {
+          "name": "L1Messenger",
+          "description": "Provides functionality for sending arbitrary-length messages to L1",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/L1Messenger.sol"
+        },
+        "0x000000000000000000000000000000000000800a": {
+          "name": "L2BaseToken",
+          "description": "Used by the `bootloader`, `MsgValueSimulator` and `ContractDeployer` system contracts to perform balance changes while simulating the msg.value behaviour on Ethereum",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/L2BaseToken.sol"
+        },
+        "0x000000000000000000000000000000000000800b": {
+          "name": "SystemContext",
+          "description": "Provides context variables such as `chainId`, `tx.origin`, `gasPrice`, `blockGasLimit` etc. It is utilised by the custom compiler to provide the implementation of block-related opcodes",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/SystemContext.sol"
+        },
+        "0x000000000000000000000000000000000000800c": {
+          "name": "BootloaderUtilities",
+          "description": "Provides utility functions for computing transaction hashes for a given transaction data depending on its transaction type. It is utilised by the Bootloader contract",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/BootloaderUtilities.sol"
+        }
+      }
+    }
+  ]
+}
