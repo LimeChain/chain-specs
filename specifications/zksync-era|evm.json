@@ -579,7 +579,7 @@
         },
         "fa": {
           "name": "STATICCALL",
-          "description": "Executes a static message call into an account.\n\nMemory growth occurs after the call has ended, leading to a difference in the memory size (msize). As a result, ZKsync Era may not panic in situations where EVM would panic due to differences in memory growth"
+          "description": "Static message-call into an account"
         },
         "fd": {
           "name": "REVERT",
