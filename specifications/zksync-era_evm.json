@@ -1,11 +1,11 @@
 {
   "chainspec_version": 1,
-  "network": "arbitrum-one",
-  "chain_id": 1,
+  "network": "zksync-era",
+  "chain_id": 324,
   "forks": [
     {
       "metadata": {
-        "name": "arbos32",
+        "name": "v27",
         "block": 0
       },
       "opcodes": {
@@ -131,7 +131,7 @@
         },
         "33": {
           "name": "CALLER",
-          "description": "Same behaviour as on Ethereum for L2 to L2 transactions. Returns the L2 address alias of the L1 contract that triggered the message for L1-to-L2 \"retryable ticket\" transactions."
+          "description": "Get caller address"
         },
         "34": {
           "name": "CALLVALUE",
@@ -183,11 +183,11 @@
         },
         "40": {
           "name": "BLOCKHASH",
-          "description": "Returns a cryptographically insecure, pseudo-random hash for `x` within the range `block.number - 256 <= x < block.number`.\n\nIf x is outside of this range, `blockhash(x)` will return 0. This includes `blockhash(block.number)`, which always returns 0 just like on Ethereum."
+          "description": "Get the hash of one of the 256 most recent complete blocks"
         },
         "41": {
           "name": "COINBASE",
-          "description": "Returns the designated internal address `0xA4b000000000000000000073657175656e636572` if the message was posted by a sequencer. If it's a delayed message, it returns the address of the delayed message's poster"
+          "description": "Returns the address of the Bootloader contract, which is `0x8001`"
         },
         "42": {
           "name": "TIMESTAMP",
@@ -195,16 +195,17 @@
         },
         "43": {
           "name": "NUMBER",
-          "description": "Returns an \"estimate\" of the L1 block number at which the Sequencer received the transaction"
+          "description": "Get the block's number"
         },
         "44": {
           "name": "PREVRANDAO",
-          "description": "Returns the constant `1`"
+          "description": "Returns the constant 2500000000000000"
         },
         "45": {
           "name": "GASLIMIT",
-          "description": "Get the block's gas limit"
-        },"46": {
+          "description": "Returns the same fixed constant as EraVM and should not be used"
+        },
+        "46": {
           "name": "CHAINID",
           "description": "Get the chain ID"
         },
@@ -215,10 +216,6 @@
         "48": {
           "name": "BASEFEE",
           "description": "Get the base fee"
-        },
-        "49": {
-          "name": "BLOBHASH",
-          "description": "Get versioned hashes"
         },
         "50": {
           "name": "POP",
@@ -568,17 +565,13 @@
           "name": "CALL",
           "description": "Message-call into an account"
         },
-        "f2": {
-          "name": "CALLCODE",
-          "description": "Message-call into this account with alternative account's code"
-        },
         "f3": {
           "name": "RETURN",
           "description": "Halt execution returning output data"
         },
         "f4": {
           "name": "DELEGATECALL",
-          "description": "Message-call into this account with an alternative account's code, but persisting the current values for sender and value"
+          "description": "Message-call into this account with an alternative account's code, but persisting the current values for sender and value. `DELEGATECALL` between EVM and native EraVM contracts will be reverted."
         },
         "f5": {
           "name": "CREATE2",
@@ -595,10 +588,6 @@
         "fe": {
           "name": "INVALID",
           "description": "Designated invalid instruction"
-        },
-        "ff": {
-          "name": "SELFDESTRUCT",
-          "description": "Deprecated. Halts execution and sends all Ether balance to the specified address. Registers the account for later deletion if executed in the same transaction as the contract was created"
         }
       },
       "precompiles": {
@@ -610,17 +599,9 @@
           "name": "SHA2-256",
           "description": "Hash function"
         },
-        "0x03": {
-          "name": "RIPEMD-160",
-          "description": "Hash function"
-        },
         "0x04": {
           "name": "identity",
           "description": "Returns the input"
-        },
-        "0x05": {
-          "name": "modexp",
-          "description": "Arbitrary-precision exponentiation under modulo"
         },
         "0x06": {
           "name": "ecAdd",
@@ -634,59 +615,56 @@
           "name": "ecPairing",
           "description": "Bilinear function on groups on the elliptic curve `alt_bn128`"
         },
-        "0x09": {
-          "name": "blake2f",
-          "description": "Compression function F used in the BLAKE2 cryptographic hashing algorithm"
-        },
-        "0x0a": {
-          "name": "point evaluation",
-          "description": "Verify p(z) = y given commitment that corresponds to the polynomial p(x) and a KZG proof. Also verify that the provided commitment matches the provided versioned_hash"
-        },
         "0x100": {
           "name": "p256Verify",
           "description": "Performs signature verifications in the secp256r1 elliptic curve"
         }
       },
       "system_contracts": {
-        "0x0000000000000000000000000000000000000064": {
-          "name": "ArbSys",
-          "description": "Provides system-level functionality for getting L2 block number, hash, checking if a call is top-level, sending cross-domain messages as-well as sending ETH to L1",
-          "url": "https://github.com/OffchainLabs/nitro/blob/6b73ae814ee3960c29747a97336974493356fddf/precompiles/ArbSys.go"
+        "0x0000000000000000000000000000000000008002": {
+          "name": "AccountCodeStorage",
+          "description": "Stores a mapping of modified versions of code hashes and account addresses. It is used by the custom compilers in order to simulate extcodehash and extcodesize opcodes",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/AccountCodeStorage.sol"
         },
-        "0x0000000000000000000000000000000000000065": {
-          "name": "ArbInfo",
-          "description": "Provides the ability to lookup account's balance and contract's deployed code",
-          "url": "https://github.com/OffchainLabs/nitro/blob/6b73ae814ee3960c29747a97336974493356fddf/precompiles/ArbInfo.go"
+        "0x0000000000000000000000000000000000008003": {
+          "name": "NonceHolder",
+          "description": "Along with `bootloader` this contract ensures that the pair (sender, nonce) is always unique, thus ensuring the uniqueness of transaction hashes. Can be used to provide nonce-related information for an account",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/NonceHolder.sol"
         },
-        "0x000000000000000000000000000000000000006b": {
-          "name": "ArbOwnerPublic",
-          "description": "Provides non-owners with info about the current chain owners",
-          "url": "https://github.com/OffchainLabs/nitro/blob/6b73ae814ee3960c29747a97336974493356fddf/precompiles/ArbOwnerPublic.go"
+        "0x0000000000000000000000000000000000008004": {
+          "name": "KnownCodesStorage",
+          "description": "Maintains a mapping of known code hashes and additional metadata. It is mostly consumed by other system contracts but can provide bytecode-related information for a given address",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/KnownCodesStorage.sol"
         },
-        "0x000000000000000000000000000000000000006c": {
-          "name": "ArbGasInfo",
-          "description": "Provides data for gas costs in wei and ArbGas, estimates for L1 basefee, the L1 pricer reward rate and recipient as-well as information on the chain speed limit, pool size and transaction gas limit",
-          "url": "https://github.com/OffchainLabs/nitro/blob/6b73ae814ee3960c29747a97336974493356fddf/precompiles/ArbGasInfo.go"
+        "0x0000000000000000000000000000000000008005": {
+          "name": "ImmutableSimulator",
+          "description": "Serves as a utility contract for the custom compiler. It stores immutable variables created during deployment by other contracts. It is needed so that contracts with the same solidity code but different constructors parameters have the same bytecode",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/ImmutableSimulator.sol"
         },
-        "0x000000000000000000000000000000000000006d": {
-          "name": "ArbAggregator",
-          "description": "Provides aggregators and their user's methods for configuring how they participate in L1 aggregation. Arbitrum One's default aggregator is the Sequencer, which a user will prefer unless `SetPreferredAggregator` is invoked to change it",
-          "url": "https://github.com/OffchainLabs/nitro/blob/6b73ae814ee3960c29747a97336974493356fddf/precompiles/ArbAggregator.go"
+        "0x0000000000000000000000000000000000008006": {
+          "name": "ContractDeployer",
+          "description": "Provides functions for deploying smart contracts on the network as well as retrieving account-related information. It is utilised by the custom compilers in order to simulate `create` and `create2` opcodes",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/ContractDeployer.sol"
         },
-        "0x000000000000000000000000000000000000006e": {
-          "name": "ArbRetryableTx",
-          "description": "Provides methods for managing retryables (cross domain messages)",
-          "url": "https://github.com/OffchainLabs/nitro/blob/6b73ae814ee3960c29747a97336974493356fddf/precompiles/ArbRetryableTx.go"
+        "0x0000000000000000000000000000000000008008": {
+          "name": "L1Messenger",
+          "description": "Provides functionality for sending arbitrary-length messages to L1",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/L1Messenger.sol"
         },
-        "0x0000000000000000000000000000000000000071": {
-          "name": "ArbWasm",
-          "description": "Provides helper methods for managing Stylus contracts",
-          "url": "https://github.com/OffchainLabs/nitro/blob/6b73ae814ee3960c29747a97336974493356fddf/precompiles/ArbWasm.go"
+        "0x000000000000000000000000000000000000800a": {
+          "name": "L2BaseToken",
+          "description": "Used by the `bootloader`, `MsgValueSimulator` and `ContractDeployer` system contracts to perform balance changes while simulating the msg.value behaviour on Ethereum",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/L2BaseToken.sol"
         },
-        "0x0000000000000000000000000000000000000072": {
-          "name": "ArbWasmCache",
-          "description": "Provides helper methods for managing Stylus cache",
-          "url": "https://github.com/OffchainLabs/nitro/blob/6b73ae814ee3960c29747a97336974493356fddf/precompiles/ArbWasmCache.go"
+        "0x000000000000000000000000000000000000800b": {
+          "name": "SystemContext",
+          "description": "Provides context variables such as `chainId`, `tx.origin`, `gasPrice`, `blockGasLimit` etc. It is utilised by the custom compiler to provide the implementation of block-related opcodes",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/SystemContext.sol"
+        },
+        "0x000000000000000000000000000000000000800c": {
+          "name": "BootloaderUtilities",
+          "description": "Provides utility functions for computing transaction hashes for a given transaction data depending on its transaction type. It is utilised by the Bootloader contract",
+          "url": "https://github.com/matter-labs/era-contracts/blob/8222265420f362c853da7160769620d9fed7f834/system-contracts/contracts/BootloaderUtilities.sol"
         }
       }
     }
