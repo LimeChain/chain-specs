@@ -139,7 +139,7 @@
         },
         "35": {
           "name": "CALLDATALOAD",
-          "description": "Gets the input data of the current environment. `offset` greater than 2^32-33 causes execution to panic."
+          "description": "Get input data of current environment"
         },
         "36": {
           "name": "CALLDATASIZE",
@@ -203,7 +203,7 @@
         },
         "45": {
           "name": "GASLIMIT",
-          "description": "Get the block's gas limit"
+          "description": "Returns the same fixed constant as EraVM and should not be used"
         },
         "46": {
           "name": "CHAINID",
@@ -559,23 +559,23 @@
         },
         "f0": {
           "name": "CREATE",
-          "description": "The `zksolc` and `zkvyper` compilers provide syntactic sugar solution to developers.\n\nCompilers replace `CREATE` opcodes with `CALL` to a system contract `ContractDeployer` providing contract deployment functionality.\n\nThe address of the contract is calculated by `address = keccak(CREATE_PREFIX, sender, senderNonce)`"
+          "description": "Create a new account with associated code"
         },
         "f1": {
           "name": "CALL",
-          "description": "Creates a new sub-context and executes the code of the given account.\n\nThe OPCODE does not support sending ether natively.\n\nIf not compiled with `zk-solc` or `zk-vyper`, Ether must be send using a system contract `MsgValueSimulator` prior to executing the CALL opcode.\n\n`zk-solc` and `zk-vyper` compilers inject the call to the system contract under the hood during compilation.\n\nMemory growth occurs after the call has ended, leading to a difference in the memory size (msize). As a result, ZKsync Era may not panic in situations where EVM would panic due to differences in memory growth."
+          "description": "Message-call into an account"
         },
         "f3": {
           "name": "RETURN",
-          "description": "Exits the current context successfully.\n\nConstructors return the array of immutable values. If you use RETURN in an assembly block in the constructor, it returns the array of immutable values initialized so far."
+          "description": "Halt execution returning output data"
         },
         "f4": {
           "name": "DELEGATECALL",
-          "description": "Message-call into this account with an alternative account's code, but persisting the current values for sender and value.\n\nThe OPCODE does not support sending ether natively.\n\nIf not compiled with `zk-solc` or `zk-vyper`, Ether must be send using a system contract `MsgValueSimulator` prior to executing the CALL opcode.\n\n`zk-solc` and `zk-vyper` compilers inject the call to the system contract under the hood during compilation.\n\nMemory growth occurs after the call has ended, leading to a difference in the memory size (msize). As a result, ZKsync Era may not panic in situations where EVM would panic due to differences in memory growth."
+          "description": "Message-call into this account with an alternative account's code, but persisting the current values for sender and value. `DELEGATECALL` between EVM and native EraVM contracts will be reverted."
         },
         "f5": {
           "name": "CREATE2",
-          "description": "The `zksolc` and `zkvyper` compilers provide syntactic sugar solution to developers.\n\nCompilers replace CREATE2 opcodes with CALL to a system contract `ContractDeployer` providing contract deployment functionality.\n\nThe address of the newly deployed contract is calculated by `address = keccak256(CREATE2_PREFIX, sender, salt, bytecodeHash, constructorInputHash)`"
+          "description": "Create a new account with associated code at a predictable address"
         },
         "fa": {
           "name": "STATICCALL",
