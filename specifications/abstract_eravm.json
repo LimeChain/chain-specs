@@ -2,6 +2,7 @@
   "chainspec_version": 1,
   "network": "abstract",
   "chain_id": 2741,
+  "description": "EraVM is a virtual machine that is used to execute the code of the smart contracts on the network. It is a modified version of the Ethereum Virtual Machine (EVM) that is optimized for zk-proof generation. Smart contracts must be compiled with custom ZKsync compilers developed (zksolc, zkvyper) to be deployed and executed on EraVM.",
   "forks": [
     {
       "metadata": {
