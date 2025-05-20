@@ -2,7 +2,7 @@
   "chainspec_version": 1,
   "network": "zksync-era",
   "chain_id": 324,
-  "description": "EVM is used when contracts interact with the EVM interpreter on a ZKsync rollup. It provides compatibility with standard Ethereum smart contracts without requiring recompilation with ZKsync custom compilers. EVM contracts can interact with native EraVM contracts with some limitations.",
+  "description": "ZKsync EVM is a slightly modified version of EVM. It can execute standard Ethereum smart contracts via an interpreter, which leads to higher execution costs compared to the native EraVM.",
   "forks": [
     {
       "metadata": {
