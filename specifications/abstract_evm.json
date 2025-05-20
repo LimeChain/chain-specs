@@ -2,6 +2,7 @@
   "chainspec_version": 1,
   "network": "abstract",
   "chain_id": 2741,
+  "description": "ZKsync EVM is a slightly modified version of EVM. It can execute standard Ethereum smart contracts via an interpreter, which leads to higher execution costs compared to the native EraVM.",
   "forks": [
     {
       "metadata": {
