@@ -654,6 +654,31 @@
           "url": "https://github.com/scroll-tech/scroll-contracts/blob/8e549c133394ff651b0da2aea1630adf395346d2/src/L2/L2ScrollMessenger.sol"
         }
       }
+    },
+    {
+      "metadata": {
+        "name": "feynman",
+        "block": 19567718
+      },
+      "opcodes": {
+        "40": {
+          "name": "BLOCKHASH",
+          "description": "Get the hash of one of the 256 most recent complete blocks"
+        }
+      },
+      "precompiles": {
+        "0x08": {
+          "name": "ecPairing",
+          "description": "Bilinear function on groups on the elliptic curve `alt_bn128`"
+        }
+      },
+      "system_contracts": {
+        "0x0000f90827f1c53a10cb7a02335b175320002935": {
+          "name": "HistoryStorage",
+          "description": "Returns the block hash associated with a given block number",
+          "url": "https://eips.ethereum.org/EIPS/eip-2935"
+        }
+      }
     }
   ]
 }
