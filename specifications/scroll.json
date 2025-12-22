@@ -679,6 +679,34 @@
           "url": "https://eips.ethereum.org/EIPS/eip-2935"
         }
       }
+    },
+    {
+      "metadata": {
+        "name": "galileo",
+        "block": 26639740
+      },
+      "opcodes": {
+        "1e": {
+          "name": "CLZ",
+          "description": "Count leading zeros in the input word"
+        }
+      },
+      "precompiles": {
+        "0x05": {
+          "name": "modexp",
+          "description": "Arbitrary-precision exponentiation under modulo. Input lengths are capped at 8192 bits (1024 bytes) and gas cost is repriced per EIP-7823 and EIP-7883."
+        },
+        "0x100": {
+          "name": "p256Verify",
+          "description": "Performs signature verifications in the secp256r1 elliptic curve. Gas cost updated per EIP-7951."
+        }
+      }
+    },
+    {
+      "metadata": {
+        "name": "galileo_v2",
+        "block": 1766041200
+      }
     }
   ]
 }
